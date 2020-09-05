@@ -1,19 +1,24 @@
 const maxPassengers = 1000;
 const leavePort = false;
+// const shipDocked = true;
 
 class Ship {
-    constructor(startingPort){
-    this.startingPort = startingPort;
+    constructor(currentPort){
+    this.currentPort = currentPort;
     this.passengers = 0;
     }
 
 setSail() {
 
     // if (this.startingPort = startingPort) 
-this.startingPort = leavePort
+this.currentPort = leavePort
 return leavePort;
 
       }   
+
+dock(port) {
+    this.currentPort = port;
+} 
 };
 
 module.exports = Ship;

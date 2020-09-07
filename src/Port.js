@@ -8,21 +8,6 @@ class Port {
 
     }
 
-setSail() {
-
-
-this.currentPort = leavePort
-return leavePort;
-
-      }   
-
-dockShip() {
-
-    
-    if (this.currentPort = leavePort)
-    return shipDocked;
-    
-          } 
 };
 
 module.exports = Port;

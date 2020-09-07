@@ -1,44 +1,75 @@
 const Ship = require('../src/cruise-ship.js');
 const Port = require('../src/Port.js');
+const Itinerary = require('../src/itinerary.js');
 
 describe('constructor', () => {
     it('returns Ship as an object', () => {
-      expect(new Ship()).toBeInstanceOf(Object);
+    const port = new Port('Dover');
+    const itinerary = new Itinerary([port]);
+    const ship = new Ship(itinerary);
+
+      expect(ship).toBeInstanceOf(Object);
     });
 
-    it('has a starting port', () => {
-      const port = new Port('Dover')
-      const ship = new Ship(port);
+    // it('has a starting port', () => {
+    //   const port = new Port('Dover')
+    //   const ship = new Ship(port);
+    //     expect(ship.currentPort).toBe(port);
+    //   });
+
+      it('has a starting port', () => {
+        const port = new Port('Dover');
+        const itinerary = new Itinerary([port]);
+        const ship = new Ship(itinerary);
+      
         expect(ship.currentPort).toBe(port);
       });
 
-      it('can dock at a different port', () => {
-        const dover = new Port('Dover');
-        const ship = new Ship(dover);
+      // it('can dock at a different port', () => {
+      //   const dover = new Port('Dover');
+      //   const ship = new Ship(dover);
 
-        const clyde = new Port('Clyde');
-        ship.dock(clyde);
+      //   const clyde = new Port('Clyde');
+      //   ship.dock(clyde);
 
+      //     expect(ship.currentPort).toBe(clyde);
+      //   });
+
+        it('can dock at a different port', () => {
+          const dover = new Port('Dover');
+          const clyde = new Port('Clyde');
+          const itinerary = new Itinerary([dover, clyde])
+          const ship = new Ship(itinerary);
+        
+          ship.setSail();
+          ship.dock();
+        
           expect(ship.currentPort).toBe(clyde);
-        });
+        })
   });
   describe('setSail', () => {
-    it('ship sets sail from a port', () => {
-      const port = new Port('Dover')
-      const ship = new Ship(port)
 
+      it('ship sets sail from a port', () => {
+        const dover = new Port('Dover');
+        const clyde = new Port('Clyde');
+        const itinerary = new Itinerary([dover, clyde]);
+        const ship = new Ship(itinerary);
+      
         ship.setSail();
-
-      expect(ship.currentPort).toBe(false);
+      
+        expect(ship.currentPort).toBeFalsy();
     });
 
-    // describe('dockShip', () => {
-    //   it('ship docks at a port if it has set sail', () => {
-    //       const ship = new Ship('Dover');
-  
-    //       ship.dockShip();
-  
-    //     expect(ship.currentPort).toBe(false);
-    //   });
-
+    it('cannot sail further than its itinerary', () => {
+      const dover = new Port('Dover');
+      const clyde = new Port('Clyde');
+      const itinerary = new Itinerary([dover, clyde]);
+      const ship = new Ship(itinerary);
+    
+      ship.setSail();
+      ship.dock();
+    
+      expect(() => ship.setSail()).toThrowError('End of itinerary reached');
+    });
+    
   });

@@ -13,22 +13,27 @@ describe('Port constructor', () => {
         expect(port.name).toEqual('Dover');
       });
   });
-  // describe('setSail', () => {
-  //   it('ship sets sail from a port', () => {
-  //       const ship = new Ship('Dover');
+  describe('addShips', () => {
+    it('add a ship to the port', () => {
+      const port = new Port('Dover');
+      const ship = {};
+      
+      port.addShip(ship);
+      
+      expect(port.dockedShip).toContain(ship);
+    });
+  });
 
-  //       ship.setSail();
-
-  //     expect(ship.currentPort).toBe(false);
-  //   });
-
-    // describe('dockShip', () => {
-    //   it('ship docks at a port if it has set sail', () => {
-    //       const ship = new Ship('Dover');
-  
-    //       ship.dockShip();
-  
-    //     expect(ship.currentPort).toBe(false);
-    //   });
-
-  // });
+    describe('removeShip', () => {
+    it('can remove a ship from the port', () => {
+      const port = new Port('Dover');
+      const titanic = {};
+      const waverly = {};
+      
+      port.addShip(titanic);
+      port.addShip(waverly);
+      port.removeShip(titanic);
+      
+      expect(port.dockedShip).toEqual([waverly]);
+    });
+  });

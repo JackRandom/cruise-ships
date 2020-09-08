@@ -10,13 +10,6 @@ describe('constructor', () => {
 
       expect(ship).toBeInstanceOf(Object);
     });
-
-    // it('has a starting port', () => {
-    //   const port = new Port('Dover')
-    //   const ship = new Ship(port);
-    //     expect(ship.currentPort).toBe(port);
-    //   });
-
       it('has a starting port', () => {
         const port = new Port('Dover');
         const itinerary = new Itinerary([port]);
@@ -25,27 +18,6 @@ describe('constructor', () => {
         expect(ship.currentPort).toBe(port);
       });
 
-      // it('can dock at a different port', () => {
-      //   const dover = new Port('Dover');
-      //   const ship = new Ship(dover);
-
-      //   const clyde = new Port('Clyde');
-      //   ship.dock(clyde);
-
-      //     expect(ship.currentPort).toBe(clyde);
-      //   });
-
-        it('can dock at a different port', () => {
-          const dover = new Port('Dover');
-          const clyde = new Port('Clyde');
-          const itinerary = new Itinerary([dover, clyde])
-          const ship = new Ship(itinerary);
-        
-          ship.setSail();
-          ship.dock();
-        
-          expect(ship.currentPort).toBe(clyde);
-        })
   });
   describe('setSail', () => {
 
@@ -71,5 +43,20 @@ describe('constructor', () => {
     
       expect(() => ship.setSail()).toThrowError('End of itinerary reached');
     });
+
+    describe('see if ships can dock at different ports', () => {
+    it('can dock at a different port', () => {
+      const dover = new Port('Dover');
+      const clyde = new Port('Clyde');
+      const itinerary = new Itinerary([dover, clyde]);
+      const ship = new Ship(itinerary);
+    
+      ship.setSail();
+      ship.dock();
+    
+      expect(ship.currentPort).toBe(clyde);
+      expect(clyde.dockedShip).toContain(ship);
+    })
     
   });
+});

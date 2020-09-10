@@ -1,6 +1,5 @@
 
-const leavePort = false;
-const shipDocked = true;
+
 
 class Itinerary {
     constructor(ports){

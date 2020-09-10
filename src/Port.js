@@ -1,6 +1,4 @@
 
-// const leavePort = false;
-// const shipDocked = true;
 
 class Port {
     constructor(name){

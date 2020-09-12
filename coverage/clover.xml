@@ -1,28 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1599501279289" clover="3.2.0">
-  <project timestamp="1599501279290" name="All files">
-    <metrics statements="16" coveredstatements="12" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="4" elements="24" coveredelements="16" complexity="0" loc="16" ncloc="16" packages="1" files="2" classes="2"/>
+<coverage generated="1599912410854" clover="3.2.0">
+  <project timestamp="1599912410854" name="All files">
+    <metrics statements="24" coveredstatements="13" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="5" elements="33" coveredelements="18" complexity="0" loc="24" ncloc="24" packages="1" files="3" classes="3"/>
     <file name="Port.js" path="/home/andrew/Projects/cruise-ships/src/Port.js">
-      <metrics statements="8" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="1"/>
-      <line num="2" count="2" type="stmt"/>
-      <line num="3" count="2" type="stmt"/>
-      <line num="7" count="6" type="stmt"/>
-      <line num="14" count="0" type="stmt"/>
-      <line num="15" count="0" type="stmt"/>
-      <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
-      <line num="23" count="0" type="stmt"/>
-      <line num="28" count="2" type="stmt"/>
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="15" count="1" type="stmt"/>
+      <line num="16" count="1" type="stmt"/>
+      <line num="20" count="1" type="stmt"/>
     </file>
     <file name="cruise-ship.js" path="/home/andrew/Projects/cruise-ships/src/cruise-ship.js">
-      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
-      <line num="1" count="2" type="stmt"/>
-      <line num="2" count="2" type="stmt"/>
-      <line num="7" count="5" type="stmt"/>
-      <line num="8" count="5" type="stmt"/>
-      <line num="14" count="2" type="stmt"/>
-      <line num="15" count="2" type="stmt"/>
-      <line num="20" count="1" type="stmt"/>
-      <line num="24" count="2" type="stmt"/>
+      <metrics statements="16" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="1"/>
+      <line num="3" count="1" type="stmt"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="1" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="10" count="0" type="stmt"/>
+      <line num="11" count="0" type="stmt"/>
+      <line num="13" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="14" count="0" type="stmt"/>
+      <line num="17" count="0" type="stmt"/>
+      <line num="18" count="0" type="stmt"/>
+      <line num="19" count="0" type="stmt"/>
+      <line num="24" count="0" type="stmt"/>
+      <line num="25" count="0" type="stmt"/>
+      <line num="27" count="0" type="stmt"/>
+      <line num="28" count="0" type="stmt"/>
+      <line num="32" count="1" type="stmt"/>
+    </file>
+    <file name="itinerary.js" path="/home/andrew/Projects/cruise-ships/src/itinerary.js">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <line num="5" count="2" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>

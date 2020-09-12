@@ -1,54 +1,38 @@
-
 const Port = require('../src/Port.js');
 
+const mockPort = new Port('Dover');
+const mockShip = jest.fn();
 
 describe('Port constructor object', () => {
-  describe('returns Port as an object', () => {
-  let port;
+  it('returns Port as an object', () => {
 
-  beforeEach(() => {
-    port = new Port('Dover');
-      expect(new Port()).toBeInstanceOf(Object);
+   
+      expect(mockPort).toBeInstanceOf(Object);
     });
 
     it('port has a name property', () => {
         
-        expect(port.name).toEqual('Dover');
+        expect(mockPort.name).toEqual('Dover');
       });
-  });
-});
-  describe('addShips function', () => {
-    describe('tests if it can add a ship to the port', () => {
-      let port;
-      let ship;
-
-      beforeEach(() => {
-        port = new Port('Dover');
-        ship = jest.fn();
-      
-      port.addShip(ship);
-      
-      expect(port.dockedShip).toContain(ship);
+      it('has a ships property', () => {
+        expect(mockPort.dockedShip).toBeInstanceOf(Array);
     });
   });
-});
+
+  describe('addShips function', () => {
+    describe('tests if it can add a ship to the port', () => {
+
+      mockPort.addShip(mockShip);
+      
+      expect(mockPort.dockedShip).toContain(mockShip);
+    });
+  });
 
     describe('removeShip function', () => {
     describe('tests if it can remove a ship from the port', () => {
-      let port;
-      let titanic;
-      let waverly;
 
-      beforeEach(() => {
-        port = new Port('Dover');
-        titanic = jest.fn();
-        waverly = jest.fn();
+      mockPort.removeShip(mockShip);
       
-      port.addShip(titanic);
-      port.addShip(waverly);
-      port.removeShip(titanic);
-      
-      expect(port.dockedShip).toEqual([waverly]);
+      expect(mockPort.dockedShip).not.toContain(mockShip);
     });
   });
-});

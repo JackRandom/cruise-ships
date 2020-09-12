@@ -24,20 +24,24 @@ itinerary = {
 let ship = new Ship(itinerary);
 
 describe('the ship constructor object', () => {
-  describe('tests the ship constructor method using beforeEach DRY method,', () => {
+  it('tests the ship constructor to see if its an object', () => {
       expect(ship).toBeInstanceOf(Object);
     });
 
-    describe('initial properties', () => {
-      it('accepts an itinerary and sets the first port to currentPort upon initilisation', () => {
+  it('gets added to port on instantiation', () => {
+      expect(port.addShip).toHaveBeenCalledWith(ship);
+    });
+  it('tests to see if the ship has no previous port', () => {
+      expect(ship.previousPort).toEqual(null);
+    });
+  
+    
+  it('gets an itinerary and sets the first port to currentPort upon initilisation', () => {
           expect(ship.currentPort.addShip).toHaveBeenCalledWith(ship);
-          expect(ship.previousPort).toEqual(null);
       });
-    })
   });
   
   describe('setSail function', () => {
-    describe('tests setSail using ship, ports and itinerary with beforeEach spies', () => {
 
       beforeEach(() => {
      
@@ -51,18 +55,38 @@ describe('the ship constructor object', () => {
       expect(dover.ships).not.toContain(ship);
   });
 
-  it('gets added to port on instantiation', () => {
-    expect(port.addShip).toHaveBeenCalledWith(ship);
-  });
-
   it('tests to see if a ship cannot sail further than its itinerary', () => {
 
-  
     ship.setSail();
     ship.dock();
   
     expect(() => ship.setSail()).toThrowError('End of itinerary reached');
       }); 
+
+
+  it('tests the ships previous port once it has set sail', () => {
+  
+        ship.setSail();
+       
+        expect(ship.previousPort).toBeFalsy();
+        }); 
+    
+    });
+  
+  });
+
+  describe('dock function', () => {
+    describe('tests dock using ship, ports and itinerary with beforeEach', () => {
+
+      beforeEach(() => {
+     
+        ship = new Ship(itinerary);
+
+  it('stays at the current port if called while already docked', () => {
+      ship.dock();
+  
+        expect(ship.currentPort.name).toBe('Clyde');
+        expect(ship.currentPort.addShip).toHaveBeenCalledWith(ship);
 
   it('tests to see if a ship can dock at a different ports', () => {
 
@@ -73,6 +97,8 @@ describe('the ship constructor object', () => {
     expect(ship.currentPort).toBe(clyde);
     expect(clyde.dockedShip).toContain(ship);
         });
+
       });
     });
   });
+});

@@ -1,49 +1,61 @@
 const Ship = require('../src/cruise-ship.js');
-const Port = require('../src/Port.js');
-const Itinerary = require('../src/itinerary.js');
 
-describe('constructor', () => {
-  describe('ship, port and itinerary', () => {
-    let ship;
-    let itinerary;
-    let port;
+const port = {
+  removeShip: jest.fn(),
+  addShip: jest.fn(),
+};
 
-    beforeEach(() => {
-    port = new Port('Dover');
-    itinerary = new Itinerary([port]);
-    ship = new Ship(itinerary);
+dover = {
+  ...port,
+  name: 'Dover',
+  ships: []
+};
 
+clyde = {
+  ...port,
+  name: 'Clyde',
+  ships: []
+};
 
+itinerary = {
+  ports: [dover, clyde]
+};
+
+let ship = new Ship(itinerary);
+
+describe('the ship constructor object', () => {
+  describe('tests the ship constructor method using beforeEach DRY method,', () => {
       expect(ship).toBeInstanceOf(Object);
     });
 
-      it('has a starting port', () => {
-     
-        expect(ship.currentPort).toBe(port);
+    describe('initial properties', () => {
+      it('accepts an itinerary and sets the first port to currentPort upon initilisation', () => {
+          expect(ship.currentPort.addShip).toHaveBeenCalledWith(ship);
+          expect(ship.previousPort).toEqual(null);
       });
-    });
+    })
   });
+  
   describe('setSail function', () => {
-    describe('tests setSail using ship, ports and itinerary', () => {
-      let ship;
-      let itinerary;
-      let dover;
-      let clyde;
+    describe('tests setSail using ship, ports and itinerary with beforeEach spies', () => {
 
       beforeEach(() => {
-        dover = new Port('Dover');
-        clyde = new Port('Clyde');
-        itinerary = new Itinerary([dover, clyde]);
+     
         ship = new Ship(itinerary);
 
-    it('a ship sets sail from a port', () => {
+    it('tests if a ship sets sail from a port', () => {
 
       ship.setSail();
     
       expect(ship.currentPort).toBeFalsy();
+      expect(dover.ships).not.toContain(ship);
   });
 
-  it('cannot sail further than its itinerary', () => {
+  it('gets added to port on instantiation', () => {
+    expect(port.addShip).toHaveBeenCalledWith(ship);
+  });
+
+  it('tests to see if a ship cannot sail further than its itinerary', () => {
 
   
     ship.setSail();
@@ -52,7 +64,7 @@ describe('constructor', () => {
     expect(() => ship.setSail()).toThrowError('End of itinerary reached');
       }); 
 
-  it('tests to see if they can dock at a different port', () => {
+  it('tests to see if a ship can dock at a different ports', () => {
 
   
     ship.setSail();

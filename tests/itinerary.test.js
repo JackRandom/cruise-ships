@@ -1,5 +1,5 @@
-const Ship = require('../src/cruise-ship.js');
-const Port = require('../src/Port.js');
+// const Ship = require('../src/cruise-ship.js');
+// const Port = require('../src/Port.js');
 const Itinerary = require('../src/itinerary.js');
 
 describe('itinerary constructor', () => {
@@ -8,8 +8,8 @@ describe('itinerary constructor', () => {
     });
 
     it('itinerary can have multiple ports ', () => {
-        const dover = new Port('Dover');
-        const clyde = new Port('Clyde');
+        const dover = jest.fn();
+        const clyde = jest.fn();
         
         const itinerary = new Itinerary([dover, clyde])
         

@@ -1,6 +1,6 @@
-const Ship = require('../src/cruise-ship.js');
+
 const Port = require('../src/Port.js');
-const Itinerary = require('../src/itinerary.js');
+
 
 describe('Port constructor object', () => {
   describe('returns Port as an object', () => {
@@ -24,7 +24,7 @@ describe('Port constructor object', () => {
 
       beforeEach(() => {
         port = new Port('Dover');
-        ship = {};
+        ship = jest.fn();
       
       port.addShip(ship);
       
@@ -41,8 +41,8 @@ describe('Port constructor object', () => {
 
       beforeEach(() => {
         port = new Port('Dover');
-        titanic = {};
-        waverly = {};
+        titanic = jest.fn();
+        waverly = jest.fn();
       
       port.addShip(titanic);
       port.addShip(waverly);

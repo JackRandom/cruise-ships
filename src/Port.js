@@ -8,7 +8,7 @@ class Port {
     }
 addShip(ship) {
     this.dockedShip.push(ship);
-    // return ship;
+
 };
 
 removeShip(ship) {
